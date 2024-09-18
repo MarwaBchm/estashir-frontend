@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Suitable for modern JS
+    "module": "ESNext", // Ensures that the latest module system is used
+    "moduleResolution": "node", // Required for resolving node modules
+    "strict": true, // Enforces strict type-checking options
+    "jsx": "preserve", // Necessary for using JSX in Vue
+    "esModuleInterop": true, // Allows default imports from commonjs modules
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforces case consistency across imports
+    "resolveJsonModule": true, // Enables importing of JSON files
+    "isolatedModules": true, // Compiles each file as an isolated module
+    "noEmit": false, // Don't emit compiled files (handled by Vue CLI)
+    "baseUrl": ".", // Sets the base URL for resolving non-relative modules
+    "paths": {
+      "@/*": ["src/*"] // Allows alias '@/' to point to 'src/' directory
+    }
+  },
+  "include": [
+    "src/**/*.ts", // Include all TypeScript files in the src folder
+    "src/**/*.d.ts", // Include all type declaration files
+    "src/**/*.vue", // Include all Vue files in the src folder
+    "src/plugins/router.js"
+  ],
+  "exclude": [
+    "node_modules" // Exclude the node_modules folder
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}
