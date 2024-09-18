@@ -1,6 +1,11 @@
 <script setup>
+
 </script>
+
 <template>
-<button>login</button>
-<button>signup</button>
+  <div>helloooo landing page</div>
 </template>
+
+<script>
+export default { name : 'Landing'}
+</script>

@@ -5,8 +5,7 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*", 
-    "src/**/*",
+    "playwright.config.*",
     "src/**/*.vue"
   ],
   "compilerOptions": {
@@ -17,6 +16,6 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"]
-  } , 
+  },
   "exclude": ["node_modules"]
 }

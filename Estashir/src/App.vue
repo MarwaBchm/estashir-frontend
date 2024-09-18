@@ -1,9 +1,6 @@
-<script setup >
-import Landing from '@/pages/Landing.vue';
+<script setup>
 </script>
 
 <template>
-  <Landing/>
-  </template>
-
-
+  <router-view />
+</template>
