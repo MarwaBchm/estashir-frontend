@@ -1,23 +1,31 @@
 import { createRouter, createWebHistory } from "vue-router";
-import type { RouteRecordRaw } from "vue-router";
-import Landing from "@/pages/Landing.vue";
 import Login from "@/pages/authentication/login.vue";
+import Signup from "@/pages/authentication/signup.vue";
+import LoginSignupWrapper from "@/pages/LoginSignupWrapper.vue";
 
-// Define the route types
-const routes: Array<RouteRecordRaw> = [
+const routes = [
   {
-    path: "/", // Ensure the root path has a leading slash
-    name: "home",
-    component: Landing,
+    path: "/",
+    component: LoginSignupWrapper,
+    children: [
+      {
+        path: "login",
+        name: "login",
+        component: Login,
+      },
+      {
+        path: "signup",
+        name: "signup",
+        component: Signup,
+      },
+    ],
   },
   {
-    path: "/login",
-    name: "login",
-    component: Login,
+    path: "/:catchAll(.*)",
+    redirect: "/login",
   },
 ];
 
-// Create the router instance
 const router = createRouter({
   history: createWebHistory(),
   routes,
