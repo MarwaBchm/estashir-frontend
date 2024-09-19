@@ -27,7 +27,7 @@
             <div class="flex items-baseline justify-center space-x-2">
               <button
                 @click="switchDivs"
-                class="text-white hover:underline border border-white px-7 py-2 rounded-3xl text-xl"
+                class="text-white border border-white px-7 py-2 rounded-3xl text-xl"
               >
                 إنشاء حساب
               </button>
@@ -60,7 +60,7 @@
             <div class="flex items-baseline justify-center space-x-2">
               <button
                 @click="switchDivs"
-                class="text-white hover:underline border border-white px-7 py-2 rounded-3xl text-xl"
+                class="text-white border border-white px-7 py-2 rounded-3xl text-xl"
               >
                 تسجيل الدخول
               </button>
