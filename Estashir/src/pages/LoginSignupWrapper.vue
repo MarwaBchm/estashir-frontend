@@ -62,13 +62,13 @@
     <div
       :class="[
         'lg:transition-all lg:duration-500 lg:ease-in-out h-full flex flex-col items-center justify-center',
-        isSwitched ? 'lg:w-1/3 w-full  text-white px-3' : 'lg:w-2/3 w-full',
+        isSwitched ? 'lg:w-1/3 w-full  text-white ' : 'lg:w-2/3 w-full',
       ]"
     >
-      <div class="text-2xl mb-4 w-full">
+      <div class="text-2xl w-full">
         <template v-if="isSwitched && isLgScreen">
           <div
-            class="w-full h-screen flex flex-col justify-center items-center bg-auth-bg bg-center bg-cover"
+            class="w-full h-screen flex flex-col justify-center items-center px-3 bg-auth-bg bg-center bg-cover"
           >
             <h1 class="text-3xl font-bold mb-10">مرحبـا بك معنــا</h1>
             <p class="mb-6 text-center text-xl">

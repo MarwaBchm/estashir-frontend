@@ -25,7 +25,7 @@
           placeholder="أدخل اسمك الكامل"
         />
         <img
-          src="@/assets/pics/email-icon.png"
+          src="@/assets/pics/user-icon.png"
           class="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
           alt="User Icon"
         />
