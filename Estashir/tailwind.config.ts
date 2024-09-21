@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       textShadow: {
-        md: "2px 2px 4px rgba(0.4, 0.4, 0, 0.5)",
+        md: "2px 2px 4px rgba(0.2, 0.2, 0, 0.2)",
       },
       keyframes: {
         widen: {
@@ -28,13 +28,21 @@ const config: Config = {
         dbl: "[200%]",
       },
       colors: {
-        blue: { 15: "#003FC4", 5: "#E1F1FF", 1: "#0B4EDA", 2: "#083CA7" },
+        blue: {
+          15: "#003FC4",
+          5: "#E1F1FF",
+          1: "#0B4EDA",
+          2: "#083CA7",
+          3: "#0300A3",
+          4: "#5A83D8",
+          6: "#0300A3",
+        },
         black: { 1: "#111111" },
         gray: { 1: "#7A8188" },
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-textshadow")],
 };
 
 export default config;

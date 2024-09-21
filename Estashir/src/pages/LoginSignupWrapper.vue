@@ -1,5 +1,15 @@
 <template>
   <div class="flex lg:flex-row flex-col w-full h-screen lg:overflow-hidden">
+    <!-- Logo in top-left corner -->
+    <button @click="goToHome">
+      <div class="absolute top-0 left-0 p-4">
+        <img
+          src="@/assets/pics/estashir.png"
+          alt="Logo"
+          class="h-12 w-auto lg:h-12"
+        />
+      </div>
+    </button>
     <!-- First div: bg-auth-bg (visible first on large screens, but always first in code) -->
     <div
       :class="[
@@ -100,6 +110,7 @@
 
 <script>
 export default {
+  name: "Authentication",
   data() {
     return {
       isSwitched: this.$route.name === "signup", // Set initial state based on the route
@@ -120,6 +131,9 @@ export default {
       this.$router.push(
         this.isSwitched ? { name: "signup" } : { name: "login" }
       );
+    },
+    goToHome() {
+      this.$router.push({ name: "landing" });
     },
     checkScreenSize() {
       this.isLgScreen = window.matchMedia("(min-width: 1024px)").matches;

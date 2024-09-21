@@ -22,7 +22,7 @@
           type="text"
           id="name"
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
-          placeholder="أدخل اسمك الكامل"
+          placeholder=" الإسم الأول"
         />
         <img
           src="@/assets/pics/user-icon.png"
@@ -30,14 +30,26 @@
           alt="User Icon"
         />
       </div>
-
+      <div class="relative w-3/4 lg:w-1/2 mb-4">
+        <input
+          type="text"
+          id="name"
+          class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
+          placeholder=" الإسم الأخير"
+        />
+        <img
+          src="@/assets/pics/user-icon.png"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
+          alt="User Icon"
+        />
+      </div>
       <!-- Email Input with Icon on the Right -->
       <div class="relative w-3/4 lg:w-1/2 mb-4">
         <input
           type="email"
           id="email"
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
-          placeholder="أدخل بريدك الإلكتروني"
+          placeholder=" البريد الإلكتروني"
         />
         <img
           src="@/assets/pics/email-icon.png"
@@ -52,7 +64,7 @@
           type="password"
           id="password"
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
-          placeholder="أدخل كلمة المرور"
+          placeholder=" كلمة المرور"
         />
         <img
           src="@/assets/pics/lock-icon.png"

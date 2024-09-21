@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blue-5 w-screen px-3">
+  <div class="bg-blue-5 h-screen w-screen px-3">
     <nav
       class="py-3 px-3 w-full bg-white flex flex-row justify-between items-center rounded-b-xl shadow-lg"
     >
@@ -7,12 +7,12 @@
         <div class="flex flex-row justify-between items-center gap-2">
           <button
             @click="signup"
-            class="bg-blue-1 text-white rounded-md px-3 py-2 shadow"
+            class="bg-blue-1 text-white rounded-md px-3 py-1.5 shadow text-shadow-md"
           >
             إنشاء حساب
           </button>
           <button @click="login">
-            <p class="text-gray-1">تسجيل الدخول</p>
+            <p class="text-gray-700 text-shadow-md">تسجيل الدخول</p>
           </button>
         </div>
         <div
@@ -20,10 +20,12 @@
         >
           <button
             :class="{
-              'text-blue-1 pb-1 outline-none': selectedItem === 'consultants',
-              'border-b-2 border-blue-1 pb-1  pr-1.5 outline-none':
+              'text-blue-1 pb-1 outline-none  text-shadow-md':
                 selectedItem === 'consultants',
-              'text-gray-800 pb-1': selectedItem !== 'consultants',
+              'border-b-2 border-blue-1 pb-1  pr-1.5 outline-none  text-shadow-md':
+                selectedItem === 'consultants',
+              'text-gray-800 pb-1  text-shadow-md':
+                selectedItem !== 'consultants',
             }"
             @click="selectItem('consultants')"
           >
@@ -31,10 +33,11 @@
           </button>
           <button
             :class="{
-              'text-blue-1 pb-1 outline-none': selectedItem === 'pricing',
-              'border-b-2 border-blue-1 pb-1  pr-1.5 outline-none':
+              'text-blue-1 pb-1 outline-none  text-shadow-md':
                 selectedItem === 'pricing',
-              'text-gray-800 pb-1': selectedItem !== 'pricing',
+              'border-b-2 border-blue-1 pb-1  pr-1.5 outline-none  text-shadow-md':
+                selectedItem === 'pricing',
+              'text-gray-800 pb-1  text-shadow-md': selectedItem !== 'pricing',
             }"
             @click="selectItem('pricing')"
           >
@@ -43,10 +46,11 @@
 
           <button
             :class="{
-              'text-blue-1 pb-1 outline-none': selectedItem === 'services',
-              'border-b-2 border-blue-1 pb-1 pr-1.5 outline-none':
+              'text-blue-1 pb-1 outline-none  text-shadow-md':
                 selectedItem === 'services',
-              'text-gray-800 pb-1': selectedItem !== 'services',
+              'border-b-2 border-blue-1 pb-1 pr-1.5 outline-none  text-shadow-md':
+                selectedItem === 'services',
+              'text-gray-800 pb-1  text-shadow-md': selectedItem !== 'services',
             }"
             @click="selectItem('services')"
           >
@@ -107,38 +111,37 @@
             </svg>
           </button>
 
-          <ul class="mt-12 space-y-4 p-4">
-            <li
-              class="text-sm font-bold text-gray-800 hover:text-blue-400"
+          <ul class="mt-12 space-y-4 p-4 flex flex-col">
+            <button
+              class="text-sm text-gray-800 hover:text-blue-500 text-right text-shadow-md"
               @click="selectItem('services')"
             >
               خدماتنا
-            </li>
-            <li
-              class="text-sm font-bold text-gray-800 hover:text-blue-400"
+            </button>
+            <button
+              class="text-sm text-gray-800 hover:text-blue-500 text-right text-shadow-md"
               @click="selectItem('pricing')"
             >
               أسعارنا
-            </li>
-            <li
-              class="text-sm font-bold text-gray-800 hover:text-blue-400"
+            </button>
+            <button
+              class="text-sm text-gray-800 hover:text-blue-500 text-right text-shadow-md"
               @click="selectItem('consultants')"
             >
               للمستشارين
-            </li>
-            <li>
-              <button
-                @click="signup"
-                class="bg-blue-1 text-white rounded-md px-3 py-2 shadow w-full"
-              >
-                إنشاء حساب
-              </button>
-            </li>
-            <li>
-              <button @click="login" class="w-full text-left text-gray-800">
-                تسجيل الدخول
-              </button>
-            </li>
+            </button>
+            <button
+              @click="signup"
+              class="text-sm text-gray-800 hover:text-blue-500 text-right text-shadow-md"
+            >
+              إنشاء حساب
+            </button>
+            <button
+              @click="login"
+              class="text-sm text-gray-800 hover:text-blue-500 text-right text-shadow-md"
+            >
+              تسجيل الدخول
+            </button>
           </ul>
         </div>
 
@@ -148,19 +151,25 @@
         >
           <img src="@/assets/pics/estashir.png" class="w-10 h-10" />
           <p
-            class="text-3xl bg-gradient-to-r from-black-1 via-blue-1 to-blue-2 text-transparent bg-clip-text pb-1 font-medium"
+            class="text-3xl bg-gradient-to-r from-black-1 via-blue-1 to-blue-2 text-transparent bg-clip-text pb-1 font-normal"
           >
             stashir
           </p>
         </router-link>
       </template>
     </nav>
+    <Consultants />
   </div>
 </template>
 
 <script>
+import Consultants from "@/components/consultants.vue";
+
 export default {
   name: "Landing",
+  components: {
+    Consultants,
+  },
   data() {
     return {
       showMenu: false,
@@ -176,12 +185,10 @@ export default {
       this.selectedItem = item; // Set the selected item
     },
     login() {
-      // Add your login logic here
-      console.log("Logging in...");
+      this.$router.push({ name: "login" });
     },
     signup() {
-      // Add your sign-up logic here
-      console.log("Signing up...");
+      this.$router.push({ name: "signup" });
     },
   },
   created() {

@@ -1,34 +1,42 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "@/components/login.vue";
 import Signup from "@/components/signup.vue";
-import LoginSignupWrapper from "@/pages/LoginSignupWrapper.vue";
+import Authentication from "@/pages/LoginSignupWrapper.vue";
 import Landing from "@/pages/Landing.vue";
 
 const routes = [
   {
-    path: "/",
-    component: LoginSignupWrapper,
+    path: "/", // Main landing page
+    component: Landing,
+    name: "landing",
+  },
+  {
+    path: "/login", // Custom path for login
+    name: "login",
+    component: Authentication,
     children: [
       {
-        path: "login",
+        path: "", // Keep this empty to show login by default
         name: "login",
         component: Login,
-      },
-      {
-        path: "signup",
-        name: "signup",
-        component: Signup,
-      },
-      {
-        path: "",
-        name: "home",
-        component: Landing,
       },
     ],
   },
   {
-    path: "/:catchAll(.*)",
-    redirect: "/login",
+    path: "/signup", // Custom path for signup
+    name: "signup",
+    component: Authentication,
+    children: [
+      {
+        path: "", // Keep this empty to show signup by default
+        name: "signup",
+        component: Signup,
+      },
+    ],
+  },
+  {
+    path: "/:catchAll(.*)", // Redirect any unknown route to home (Landing)
+    redirect: "/",
   },
 ];
 
