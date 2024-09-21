@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      textShadow: {
+        md: "2px 2px 4px rgba(0.4, 0.4, 0, 0.5)",
+      },
       keyframes: {
         widen: {
           "30%": { width: "1500%" },
@@ -24,7 +27,11 @@ const config: Config = {
       translate: {
         dbl: "[200%]",
       },
-      colors: { blue: { 15: "#003FC4" } },
+      colors: {
+        blue: { 15: "#003FC4", 5: "#E1F1FF", 1: "#0B4EDA", 2: "#083CA7" },
+        black: { 1: "#111111" },
+        gray: { 1: "#7A8188" },
+      },
     },
   },
   plugins: [],
