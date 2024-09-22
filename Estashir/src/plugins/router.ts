@@ -3,7 +3,8 @@ import Login from "@/components/login.vue";
 import Signup from "@/components/signup.vue";
 import Authentication from "@/pages/LoginSignupWrapper.vue";
 import Landing from "@/pages/Landing.vue";
-
+import consultantDashboard from "@/components/consultantDashboard.vue";
+import ConsultantDashboard from "@/pages/consultantDashboard.vue";
 const routes = [
   {
     path: "/", // Main landing page
@@ -33,6 +34,11 @@ const routes = [
         component: Signup,
       },
     ],
+  },
+  {
+    path: "/dashboard", // Custom path for signup
+    name: "consultantDashboard",
+    component: ConsultantDashboard,
   },
   {
     path: "/:catchAll(.*)", // Redirect any unknown route to home (Landing)
