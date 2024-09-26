@@ -6,7 +6,7 @@
         حول مهاراتك إلى
       </h1>
       <div
-        class="flex flex-row pr-24 lg:pr-36 text-right justify-end mb-10 overflow-visible"
+        class="flex flex-row pr-24 lg:pr-36 text-right justify-end mb-10 "
       >
         <h1 class="lg:text-5xl text-4xl pt-3 font-medium text-blue-6">دخل</h1>
         <h1
@@ -19,11 +19,13 @@
         .حوِّل شغفك ومعرفتك إلى مشروع جانبي اليوم <br />
         .ساعد الآخرين على تحقيق أهدافهم
       </p>
-      <button
-        class="text-white text-center shadow rounded-md bg-blue-1 px-4 py-2 mt-14"
-      >
-        اكتشف المزيد
-      </button>
+      <div class="flex flex-row lg:justify-end justify-center">
+        <button
+          class="text-white text-center shadow rounded-md bg-blue-1 px-4 py-2 mt-14"
+        >
+          اكتشف المزيد
+        </button>
+      </div>
     </div>
   </div>
 </template>

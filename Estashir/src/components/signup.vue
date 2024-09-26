@@ -29,7 +29,7 @@
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
           placeholder=" الإسم الأول"
         />
-        <p v-if="firstNameError" class="text-red-500 text-sm">
+        <p v-if="firstNameError" class="text-red-500 text-sm text-right">
           {{ firstNameError }}
         </p>
       </div>
@@ -44,7 +44,7 @@
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
           placeholder=" الإسم الأخير"
         />
-        <p v-if="lastNameError" class="text-red-500 text-sm">
+        <p v-if="lastNameError" class="text-red-500 text-sm text-right">
           {{ lastNameError }}
         </p>
       </div>
@@ -166,7 +166,7 @@ export default {
       } else if (!strongRegex.test(this.password)) {
         this.passwordError = "كلمة المرور يجب أن تحتوي على حرف كبير ورمز خاص";
         this.passwordStrength = "كلمة مرور ضعيفة";
-        this.passwordStrengthColor = "text-red-500";
+        this.passwordStrengthColor = "text-red-500 text-right";
       } else {
         this.passwordError = "";
         this.passwordStrength = "كلمة مرور قوية";

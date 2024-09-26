@@ -4,7 +4,7 @@
   >
     <h2 class="text-3xl font-bold mb-8 text-blue-15">تسجيل الدخول</h2>
     <!-- Display error message -->
-    <p v-if="errorMessage" class="text-red-500 mb-3">{{ errorMessage }}</p>
+
     <form
       @submit.prevent="handleLogin"
       class="w-full flex flex-col justify-center items-center"
@@ -37,22 +37,44 @@
         />
       </div>
 
-      <!-- Password Input with Icon on the Right -->
+      <!-- Password Input with Toggle Visibility Button -->
       <div class="relative w-3/4 lg:w-1/2 mb-4 mt-1">
         <input
-          type="password"
+          :type="passwordVisible ? 'text' : 'password'"
           id="password"
           v-model="password"
-          class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
+          class="mt-1 p-2 pl-10 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
           placeholder="أدخل كلمة المرور"
         />
+        <!-- Password Lock Icon on the Right -->
         <img
           src="@/assets/pics/lock-icon.png"
           class="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
           alt="Password Icon"
         />
+        <!-- Toggle Password Visibility Button with Icon -->
+        <button
+          type="button"
+          @click="togglePasswordVisibility"
+          class="absolute left-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
+        >
+          <template v-if="passwordVisible">
+            <img
+              src="@/assets/pics/eye-off.png"
+              alt="TogglePasswordVisibility"
+              class="w-full h-full"
+          /></template>
+          <template v-else>
+            <img
+              src="@/assets/pics/eye.png"
+              alt="TogglePasswordVisibility"
+              class="w-full h-full"
+          /></template>
+        </button>
       </div>
-
+      <p v-if="errorMessage" class="text-red-500 mb-3 text-lg">
+        {{ errorMessage }}
+      </p>
       <button
         type="submit"
         class="lg:w-2/5 w-1/2 py-2 rounded-md bg-blue-500 text-white text-lg hover:bg-blue-15 transition duration-300"
@@ -64,12 +86,14 @@
 </template>
 
 <script>
-export default {name:"Login" , 
+export default {
+  name: "Login",
   data() {
     return {
       email: "",
       password: "",
       errorMessage: "", // To store error message
+      passwordVisible: false, // State to track password visibility
     };
   },
   methods: {
@@ -88,7 +112,7 @@ export default {name:"Login" ,
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || "Login failed");
+          throw new Error(errorData.error || "فشل تسجيل الدخول");
         }
 
         const data = await response.json();
@@ -98,8 +122,11 @@ export default {name:"Login" ,
 
         this.errorMessage = ""; // Clear any existing error message
       } catch (error) {
-        this.errorMessage = error.message; // Display the error message
+        this.errorMessage = "فشل تسجيل الدخول"; // Display the error message
       }
+    },
+    togglePasswordVisibility() {
+      this.passwordVisible = !this.passwordVisible;
     },
   },
 };
