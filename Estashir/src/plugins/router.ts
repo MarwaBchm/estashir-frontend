@@ -22,7 +22,7 @@ const routes = [
     children: [
       {
         path: "", // Keep this empty to show login by default
-        name: "loginChild",
+        name: "login",
         component: Login,
       },
     ],
@@ -34,7 +34,7 @@ const routes = [
     children: [
       {
         path: "", // Keep this empty to show signup by default
-        name: "signupChild",
+        name: "signup",
         component: Signup,
       },
     ],

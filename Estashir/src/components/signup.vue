@@ -115,7 +115,7 @@
 
 <script>
 export default {
-  name: "SignUp",
+  name: "Signup",
   data() {
     return {
       firstName: "",
