@@ -36,7 +36,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'profil',
               }"
-              @click="selectItem('profil')"
+              @click="
+                selectItem('profil');
+                goTOprofile();
+              "
             >
               <div class="flex flex-row justify-center items-center gap-3">
                 <p>الملف الشخصي</p>
@@ -59,7 +62,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'availability',
               }"
-              @click="selectItem('availability')"
+              @click="
+                selectItem('availability');
+                goTOavailibility();
+              "
             >
               <div class="flex flex-row justify-center items-center gap-2">
                 <p>مواعيد الحجوزات</p>
@@ -83,7 +89,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'bookings',
               }"
-              @click="selectItem('bookings')"
+              @click="
+                selectItem('bookings');
+                goTObookings();
+              "
             >
               <div class="flex flex-row justify-end items-center gap-2">
                 <p>المواعيد المحجوزة</p>
@@ -107,7 +116,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'wallet',
               }"
-              @click="selectItem('wallet')"
+              @click="
+                selectItem('wallet');
+                goTOwallet();
+              "
             >
               <div class="flex flex-row justify-center items-center gap-3">
                 <p>محفظتي</p>
@@ -131,7 +143,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'services',
               }"
-              @click="selectItem('services')"
+              @click="
+                selectItem('services');
+                goTOservices();
+              "
             >
               <div class="flex flex-row justify-center items-center gap-3">
                 <p>خدماتي</p>
@@ -154,7 +169,10 @@
                 'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                   selectedItem !== 'rating',
               }"
-              @click="selectItem('rating')"
+              @click="
+                selectItem('rating');
+                goTOreviews();
+              "
             >
               <div class="flex flex-row justify-center items-center gap-3">
                 <p>التقييمات</p>
@@ -182,7 +200,10 @@
               'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                 selectedItem !== 'settings',
             }"
-            @click="selectItem('settings')"
+            @click="
+              selectItem('settings');
+              goTOsettings();
+            "
           >
             <div class="flex flex-row justify-end items-center gap-3">
               <p>الإعدادات</p>
@@ -206,7 +227,10 @@
               'text-gray-600  justify-end flex flex-row w-full  px-2 py-1.5 mb-1.5':
                 selectedItem !== 'logout',
             }"
-            @click="selectItem('logout')"
+            @click="
+              selectItem('logout');
+              handleLogout();
+            "
           >
             <div class="flex flex-row justify-center items-center gap-3">
               <p>تسجيل الخروج</p>
@@ -273,14 +297,44 @@ export default {
     selectItem(item) {
       this.selectedItem = item;
     },
-    goTOdashboard() {
-      this.$router.push({ name: "admnDashboard" });
-    },
-    goTOaccntsettings() {
-      this.$router.push({ name: "admnAccountsSettings" });
+    goTOprofile() {
+      this.$router.push({ name: "profile" });
     },
     goTOsettings() {
-      this.$router.push({ name: "admnSettings" });
+      this.$router.push({ name: "settings" });
+    },
+    goTOwallet() {
+      this.$router.push({ name: "wallet" });
+    },
+    goTOavailibility() {
+      this.$router.push({ name: "availibility" });
+    },
+    goTObookings() {
+      this.$router.push({ name: "bookings" });
+    },
+    goTOservices() {
+      this.$router.push({ name: "services" });
+    },
+    goTOreviews() {
+      this.$router.push({ name: "review" });
+    },
+    async handleLogout() {
+      try {
+        const response = await fetch("http://localhost:3000/auth/logout", {
+          method: "POST",
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to log out");
+        }
+
+        localStorage.removeItem("user");
+
+        this.$router.push({ name: "login" });
+      } catch (error) {
+        console.error("Error during logout:", error);
+      }
     },
   },
 };

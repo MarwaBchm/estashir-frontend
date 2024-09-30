@@ -215,6 +215,8 @@ export default {
         });
 
         if (!response.ok) {
+          console.log(response.data);
+
           throw new Error("Failed to sign up");
         }
 

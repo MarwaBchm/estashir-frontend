@@ -86,6 +86,7 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
 export default {
   name: "Login",
   data() {
@@ -108,6 +109,7 @@ export default {
             emailOrUsername: this.email,
             password: this.password,
           }),
+          credentials: "include", // Send cookies with the request
         });
 
         if (!response.ok) {
@@ -116,15 +118,35 @@ export default {
         }
 
         const data = await response.json();
-        // Handle successful login (e.g., store token, navigate)
-        console.log("Login successful", data);
-        this.$router.push({ name: "consultantDashboard" });
 
-        this.errorMessage = ""; // Clear any existing error message
+        // Store user information in localStorage after successful login
+        const userInfo = {
+          firstName: data.user.firstname,
+          lastName: data.user.lastname,
+          email: data.user.email,
+          username: data.user.username,
+          role: data.user.role,
+        };
+
+        localStorage.setItem("user", JSON.stringify(userInfo)); // Corrected variable name
+
+        // Set the token in cookies
+        const token = data.token; // Assuming your API returns a token
+        Cookies.set("token", token, { expires: 2 }); // Store token for authentication
+
+        console.log("Login successful", data);
+
+        // Clear the error message and reset the form
+        this.errorMessage = "";
+        this.email = "";
+        this.password = "";
+        // Navigate to the dashboard or appropriate route
+        this.$router.push({ name: "consultantProfile" });
       } catch (error) {
-        this.errorMessage = "فشل تسجيل الدخول"; // Display the error message
+        this.errorMessage = error.message || "فشل تسجيل الدخول"; // Display the error message
       }
     },
+
     togglePasswordVisibility() {
       this.passwordVisible = !this.passwordVisible;
     },
