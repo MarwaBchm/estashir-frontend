@@ -273,6 +273,38 @@
       </div>
 
       <!-- Main content goes here -->
+      <nav class="flex flex-row gap-20 items-center pb-1 pl-2">
+        <div class="flex flex-rox items-center gap-1.5">
+          <button @click="redirectProfile">
+            <img
+              src="@/assets/pics/profile.jpg"
+              class="rounded-full h-8 w-8 border"
+            />
+          </button>
+          <button @click="showDialog()" class="pt-2">
+            <img src="@/assets/pics/arrow-down.png" class="h-3 w-3" />
+          </button>
+          <div
+            v-if="isDialogOpen"
+            class="absolute z-50 mt-2 left-14 top-8 bg-white p-4 rounded shadow-lg"
+          >
+            <p class="text-lg">Hello</p>
+          </div>
+        </div>
+        <div class="relative w-64">
+          <input
+            type="text"
+            placeholder="ابحث هنا"
+            class="w-full border border-blue-5 pl-10 py-0.5 text-gray-800 rounded-full focus:outline-none shadow-lg text-right px-2 pr-10"
+          />
+          <img
+            src="@/assets/pics/loupe-blue.png"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+            alt="Search Icon"
+          />
+        </div>
+      </nav>
+
       <router-view />
     </div>
   </div>
@@ -285,6 +317,7 @@ export default {
     return {
       isSidebarOpen: false,
       selectedItem: "profil",
+      isDialogOpen: false,
     };
   },
   methods: {
@@ -334,6 +367,13 @@ export default {
         this.$router.push({ name: "login" });
       } catch (error) {
         console.error("Error during logout:", error);
+      }
+    },
+    showDialog() {
+      if (this.isDialogOpen) {
+        this.isDialogOpen = false;
+      } else {
+        this.isDialogOpen = true;
       }
     },
   },
