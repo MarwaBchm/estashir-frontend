@@ -286,9 +286,34 @@
           </button>
           <div
             v-if="isDialogOpen"
-            class="absolute z-50 mt-2 left-14 top-8 bg-white p-4 rounded shadow-lg"
+            class="absolute z-50 mt-2 left-14 top-8 bg-white rounded shadow flex flex-col shadow-blue-400 mx-auto w-44 align-center items-end pb-2 px-1"
           >
-            <p class="text-lg">Hello</p>
+            <p class="text-lg mx-4 mt-2">
+              {{ user.firstName + " " + user.lastName }}
+            </p>
+            <hr
+              style="border: none; border-top: 1px solid lightgray"
+              class="shadow shadow-blue-400 w-full my-2"
+            />
+
+            <button
+              class="flex flex-row text-sm items-center justify-end gap-1 text-slate-600 mb-2 px-1 py-1.5 rounded hover:bg-blue-5 w-full"
+            >
+              <p>الملف الشخصي</p>
+              <img src="@/assets/pics/user.png" class="h-5 w-5" />
+            </button>
+            <button
+              class="flex flex-row text-sm items-center justify-end gap-1 text-slate-600 mb-2 px-1 py-1.5 rounded hover:bg-blue-5 w-full"
+            >
+              <p>الإعدادات</p>
+              <img src="@/assets/pics/settings.png" class="h-5 w-5" />
+            </button>
+            <button
+              class="flex flex-row text-sm items-center justify-end gap-1 text-slate-600 mb-2 px-1 py-1.5 rounded hover:bg-blue-5 w-full"
+            >
+              <p>تسجيل الخروج</p>
+              <img src="@/assets/pics/logout.png" class="h-4 w-4 mt-1" />
+            </button>
           </div>
         </div>
         <div class="relative w-64">
@@ -317,8 +342,15 @@ export default {
     return {
       isSidebarOpen: false,
       selectedItem: "profil",
+      user: null,
       isDialogOpen: false,
     };
+  },
+  created() {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
   },
   methods: {
     toggleSidebar() {

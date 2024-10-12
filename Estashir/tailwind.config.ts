@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        xxs: "0.82rem",
+        md: "1rem",
+      },
       textShadow: {
         md: "2px 2px 4px rgba(0.2, 0.2, 0, 0.2)",
       },
@@ -23,6 +27,7 @@ const config: Config = {
       },
       backgroundImage: {
         "auth-bg": "url('@/assets/pics/bg.png')",
+        "wave-bg": "url('@/assets/pics/wave.jpg')",
       },
       translate: {
         dbl: "[200%]",
