@@ -1,12 +1,28 @@
 <template>
-  <div class="flex lg:flex-row flex-col w-full h-screen lg:overflow-hidden">
+  <div
+    class="flex lg:flex-row flex-col w-full h-screen lg:overflow-hidden relative"
+  >
     <!-- Logo in top-left corner -->
     <button @click="goToHome">
-      <div class="absolute top-0 left-0 p-4">
+      <div v-if="isLgScreen" class="absolute top-0 left-0 p-4">
         <img
-          src="@/assets/pics/estashir.png"
+          v-if="isSwitched"
+          src="@/assets/pics/logo.png"
           alt="Logo"
           class="h-12 w-auto lg:h-12"
+        />
+        <img
+          v-else
+          src="@/assets/pics/logoWhite.png"
+          alt="Logo"
+          class="h-14 w-auto lg:h-14"
+        />
+      </div>
+      <div v-else class="absolute top-0 left-0 p-4">
+        <img
+          src="@/assets/pics/logoWhite.png"
+          alt="Logo"
+          class="h-14 w-auto lg:h-14"
         />
       </div>
     </button>
@@ -37,7 +53,7 @@
             <div class="flex items-baseline justify-center space-x-2">
               <button
                 @click="switchDivs"
-                class="text-white border border-white px-7 py-2 rounded-3xl text-xl"
+                class="text-white border border-white px-7 py-2 rounded-3xl text-xl hover:bg-white hover:bg-opacity-10"
               >
                 تسجيل الدخول
               </button>
@@ -58,7 +74,7 @@
             <div class="flex items-baseline justify-center space-x-2">
               <button
                 @click="switchDivs"
-                class="text-white border border-white px-7 py-2 rounded-3xl text-xl"
+                class="text-white border border-white px-7 py-2 rounded-3xl text-xl hover:bg-white hover:bg-opacity-10"
               >
                 إنشاء حساب
               </button>
@@ -90,7 +106,7 @@
             <div class="flex items-baseline justify-center space-x-2">
               <button
                 @click="switchDivs"
-                class="text-white border border-white px-7 py-2 rounded-3xl text-xl"
+                class="text-white border border-white px-7 py-2 rounded-3xl text-xl hover:bg-white hover:bg-opacity-10"
               >
                 تسجيل الدخول
               </button>

@@ -9,6 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        openSansArabic: [
+          "openSansArabic",
+          "openSansArabicMedium",
+          "openSansArabicLight",
+          "openSansArabicRegular",
+        ],
+      },
       fontSize: {
         xxs: "0.82rem",
         md: "1rem",
@@ -28,10 +36,15 @@ const config: Config = {
       backgroundImage: {
         "auth-bg": "url('@/assets/pics/bg.png')",
         "wave-bg": "url('@/assets/pics/wave.jpg')",
+        "settings-bg": "url('@/assets/pics/settings-bg.png')",
       },
       translate: {
         dbl: "[200%]",
       },
+      screens: {
+        sm: "20px",
+        md: "600px",
+     },
       colors: {
         blue: {
           15: "#003FC4",
@@ -45,7 +58,11 @@ const config: Config = {
           8: "#C5E6FF",
         },
         black: { 1: "#111111" },
-        gray: { 1: "#7A8188" },
+        gray: { 1: "#7A8188", 2: "#F8F7F2" },
+        red: {
+          850: "#B30506",
+          1: "#FFEDED",
+        },
       },
     },
   },

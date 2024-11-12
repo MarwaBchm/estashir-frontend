@@ -185,7 +185,7 @@
       </div>
 
       <!-- Main content goes here -->
-      <router-view />
+      <router-view   />
     </div>
   </div>
 </template>

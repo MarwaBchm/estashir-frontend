@@ -1,6 +1,6 @@
 <template>
   <!-- Buttons for switching views -->
-  <div class="text-right flex flex-row justify-end items-center gap-10">
+  <div class="text-right flex flex-row justify-end items-center lg:gap-10 gap-5 lg:mt-0 mt-4 mr-2">
     <button
       @click="changeView('event')"
       :class="{
@@ -31,13 +31,13 @@
     <!-- Meetings Content (Consultation) -->
     <div v-if="currentView === 'consultation'">
       <ul
-        class="w-full flex flex-col justify-start items-end gap-3"
+        class="w-full flex flex-col justify-start items-end gap-3 overflow-y-auto"
         v-if="consultations.length > 0"
       >
         <table
           v-for="(consultation, index) in consultations"
           :key="index"
-          class="w-3/5 border rounded-lg flex"
+          class="lg:w-3/5 w-11/12 border rounded-lg flex"
         >
           <tbody>
             <tr>
@@ -116,7 +116,7 @@
         <table
           v-for="(event, index) in events"
           :key="index"
-          class="w-3/5 border rounded-lg flex"
+          class="lg:w-3/5 w-11/12 border rounded-lg flex"
         >
           <tbody>
             <tr>
@@ -195,14 +195,14 @@
     <button
       v-if="currentView === 'event' && events.length > 0"
       @click="showAddDialog"
-      class="fixed top-28 left-3 py-2 px-4 text-xxs text-white bg-blue-700 rounded-xl"
+      class="fixed bottom-3 left-3 py-2 px-4 text-xxs text-white bg-blue-700 rounded-xl"
     >
       إضافة ندوة إستشارية جديدة +
     </button>
     <button
       v-else-if="currentView === 'consultation' && consultations.length > 0"
       @click="showAddDialog"
-      class="fixed top-28 left-3 py-2 px-4 text-xxs text-white bg-blue-700 rounded-xl"
+      class="fixed bottom-3 left-3 py-2 px-4 text-xxs text-white bg-blue-700 rounded-xl"
     >
       إضافة إستشارة جديدة +
     </button>
@@ -213,13 +213,13 @@
     >
       <div
         v-if="currentView === 'consultation'"
-        class="lg:w-1/3 w-4/5  bg-white rounded-lg shadow-md shadow-blue-7 text-right flex flex-col justify-center lg:my-20 my-1"
+        class="lg:w-1/3 w-4/5 bg-white rounded-lg shadow-md shadow-blue-7 text-right flex flex-col justify-center lg:my-20 my-1"
       >
         <AddConsultation @closeDialog="closeDialog" />
       </div>
       <div
         v-else-if="currentView === 'event'"
-        class="lg:w-1/3 w-4/5  bg-white rounded-lg shadow-md shadow-blue-7 text-right flex flex-col justify-center lg:my-20 my-1"
+        class="lg:w-1/3 w-4/5 bg-white rounded-lg shadow-md shadow-blue-7 text-right flex flex-col justify-center lg:my-20 my-1"
       >
         <AddEvent @closeDialog="closeDialog" />
       </div>
@@ -255,6 +255,16 @@ export default {
 
       events: [
         {
+          title: "ورشة عمل حول التخطيط المالي",
+          description:
+            "ورشة جماعية لمدة 30 دقيقة تركز على استراتيجيات التخطيط المالي وإدارة الميزانيات، وتوفر نصائح قابلة للتطبيق لمجموعة من المشاركين.",
+          price: 100,
+          duration: "٣٠ دقيقة ",
+          date: "2024-10-15",
+          revenue: 400,
+          bookings: 3,
+          totale: 20,
+        }, {
           title: "ورشة عمل حول التخطيط المالي",
           description:
             "ورشة جماعية لمدة 30 دقيقة تركز على استراتيجيات التخطيط المالي وإدارة الميزانيات، وتوفر نصائح قابلة للتطبيق لمجموعة من المشاركين.",

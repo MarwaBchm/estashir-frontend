@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col p-6 w-full h-full items-center justify-center gap-3 bg-red"
+    class="flex flex-col p-6 w-full items-center justify-center gap-3 h-screen overflow-y-auto"
   >
     <h2 class="text-3xl font-bold mb-8 text-blue-15">إنشاء حساب جديد</h2>
     <form
@@ -9,7 +9,7 @@
     >
       <div class="mb-6">
         <button
-          class="text-center text-sm text-gray-700 mb-1 shadow-sm border rounded-xl py-1 px-7 gap-3 border-gray-500 flex flex-row justify-center items-center border-solid outline-1"
+          class="text-center text-sm text-gray-700 mb-1 shadow-sm border rounded-xl py-1 px-7 gap-3 border-gray-500 flex flex-row justify-center items-center border-solid outline-1 hover:bg-slate-100"
         >
           <p>Google إنشاء حساب باستخدام</p>
           <img src="@/assets/pics/google.png" class="w-5 h-5" />
@@ -103,7 +103,7 @@
 
       <button
         type="submit"
-        class="lg:w-2/5 w-1/2 py-2 rounded-md bg-blue-500 text-white text-lg hover:bg-blue-15 transition duration-300"
+        class="lg:w-2/5 w-1/2 py-2 rounded-md bg-blue-15 text-white text-lg hover:bg-blue-500 transition duration-300"
       >
         إنشاء حساب
       </button>

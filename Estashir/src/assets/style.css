@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "openSansArabic";
+  src: url("@/assets/font/NeoSansArabic.ttf") format("truetype"); /* Adjust format as needed */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "openSansArabicMedium";
+  src: url("@/assets/font/NeoSansArabicMedium.ttf") format("truetype"); /* Adjust format as needed */
+  font-weight: medium;
+  font-style: normal;
+}
+@font-face {
+  font-family: "openSansArabicLight";
+  src: url("@/assets/font/NeoSansArabicLight.ttf") format("truetype"); /* Adjust format as needed */
+  font-weight: light;
+  font-style: normal;
+}
+@font-face {
+  font-family: "openSansArabicBold";
+  src: url("@/assets/font/NeoSansArabicBold.ttf") format("truetype"); /* Adjust format as needed */
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "openSansArabicRegular";
+  src: url("@/assets/font/NeoSansArabicBold.ttf") format("truetype"); /* Adjust format as needed */
+  font-weight: regular;
+  font-style: normal;
+}

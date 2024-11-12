@@ -3,7 +3,7 @@
     <!-- Sidebar -->
     <div
       :class="[
-        'lg:w-56 w-1/2 h-full bg-gray-50 shadow-md text-white fixed top-0 right-0 z-50 transition-transform transform lg:translate-x-0 duration-500 ease-in-out  flex flex-col justify-between items-end ',
+        'lg:w-56 w-1/2 h-full bg-gray-50 shadow-md text-white fixed top-0 right-0 z-50 transition-transform transform lg:translate-x-0 duration-500 ease-in-out  flex flex-col justify-between items-end  overflow-y-scroll',
         isSidebarOpen ? 'translate-x-0' : 'translate-x-full',
       ]"
     >
@@ -249,31 +249,31 @@
     <!-- Main Content Area -->
     <div class="flex-1 ml-auto bg-white p-4 pt-2 relative lg:pr-56">
       <!-- Hamburger Icon for small screens -->
-      <div @click="toggleSidebar" class="lg:hidden fixed top-4 left-4 z-50">
-        <div class="space-y-2 cursor-pointer">
+      <div @click="toggleSidebar" class="lg:hidden fixed top-4 right-4 z-50">
+        <div class="space-y-1.5 cursor-pointer">
           <span
             :class="[
-              'block w-6 h-0.5 bg-gray-800 transition-transform duration-300 ease-in-out',
-              isSidebarOpen ? 'rotate-45 translate-y-2.5' : '',
+              'block w-5 h-0.5 bg-slate-600 transition-transform duration-300 ease-in-out',
+              isSidebarOpen ? 'rotate-45 translate-y-2' : '',
             ]"
           ></span>
           <span
             :class="[
-              'block w-6 h-0.5 bg-gray-800 transition-opacity duration-300 ease-in-out',
+              'block w-5 h-0.5 bg-slate-600 transition-opacity duration-300 ease-in-out',
               isSidebarOpen ? 'opacity-0' : '',
             ]"
           ></span>
           <span
             :class="[
-              'block w-6 h-0.5 bg-gray-800 transition-transform duration-300 ease-in-out',
-              isSidebarOpen ? '-rotate-45 -translate-y-2.5' : '',
+              'block w-5 h-0.5 bg-slate-600 transition-transform duration-300 ease-in-out',
+              isSidebarOpen ? '-rotate-45 -translate-y-2' : '',
             ]"
           ></span>
         </div>
       </div>
 
       <!-- Main content goes here -->
-      <nav class="flex flex-row gap-20 items-center pb-1 pl-2">
+      <nav class="flex flex-row gap-20 items-center pb-1 pl-2 z-0">
         <div class="flex flex-rox items-center gap-1.5">
           <button @click="redirectProfile">
             <img
@@ -316,11 +316,11 @@
             </button>
           </div>
         </div>
-        <div class="relative w-64">
+        <div class="relative w-64 mr-10">
           <input
             type="text"
             placeholder="ابحث هنا"
-            class="w-full border border-blue-5 pl-10 py-0.5 text-gray-800 rounded-full focus:outline-none shadow-lg text-right px-2 pr-10"
+            class="w-full border border-blue-5 pl-10 py-0.5 text-gray-800 rounded-full focus:outline-none shadow-lg text-right px-2 pr-10 "
           />
           <img
             src="@/assets/pics/loupe-blue.png"
