@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: "/login", // Custom path for login
-    name: "login",
+    name: "authlog",
     component: Authentication,
     children: [
       {
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: "/signup", // Custom path for signup
-    name: "signup",
+    name: "authsign",
     component: Authentication,
     children: [
       {

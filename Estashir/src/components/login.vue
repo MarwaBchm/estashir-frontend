@@ -1,9 +1,8 @@
 <template>
   <div
-    class="flex flex-col p-6 w-full h-full items-center justify-center gap-3 bg-red"
+    class="flex flex-col p-6 w-full h-full items-center justify-center gap-3 bg-red overflow-y-auto"
   >
     <h2 class="text-3xl font-bold mb-8 text-blue-15">تسجيل الدخول</h2>
-    <!-- Display error message -->
 
     <form
       @submit.prevent="handleLogin"
@@ -11,33 +10,33 @@
     >
       <div class="mb-6">
         <button
-          class="text-center text-sm text-gray-700 mb-1 shadow-sm border rounded-xl py-1 px-7 gap-3 border-gray-500 flex flex-row justify-center items-center border-solid outline-1"
+          class="text-center text-sm text-gray-700 mb-1 shadow-sm border rounded-xl py-1 px-7 gap-3 border-gray-500 flex flex-row justify-center items-center border-solid outline-1 hover:bg-slate-100"
         >
-          <p>Google تسجيل الدخول باستخدام حساب</p>
+          <p>تسجيل الدخول باستخدام حساب Google</p>
           <img src="@/assets/pics/google.png" class="w-5 h-5" />
         </button>
       </div>
       <p class="text-center text-sm text-gray-500 flex justify-center mb-3">
-        الخاص بك Gmail أو استخدم حساب
+        أو استخدم حساب Gmail الخاص بك
       </p>
 
-      <!-- Email Input with Icon on the Right -->
+      <!-- إدخال البريد الإلكتروني -->
       <div class="relative w-3/4 lg:w-1/2 mb-4">
         <input
           type="email"
           id="email"
           v-model="email"
           class="mt-1 p-2 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
-          placeholder="عنوان بريدك الإلكتروني"
+          placeholder="أدخل بريدك الإلكتروني"
         />
         <img
           src="@/assets/pics/email-icon.png"
           class="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
-          alt="Email Icon"
+          alt="رمز البريد الإلكتروني"
         />
       </div>
 
-      <!-- Password Input with Toggle Visibility Button -->
+      <!-- إدخال كلمة المرور -->
       <div class="relative w-3/4 lg:w-1/2 mb-4 mt-1">
         <input
           :type="passwordVisible ? 'text' : 'password'"
@@ -46,13 +45,11 @@
           class="mt-1 p-2 pl-10 pr-10 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-15 focus:border-transparent text-lg text-right w-full"
           placeholder="أدخل كلمة المرور"
         />
-        <!-- Password Lock Icon on the Right -->
         <img
           src="@/assets/pics/lock-icon.png"
           class="absolute right-2 top-1/2 transform -translate-y-1/2 w-6 h-6"
-          alt="Password Icon"
+          alt="رمز القفل"
         />
-        <!-- Toggle Password Visibility Button with Icon -->
         <button
           type="button"
           @click="togglePasswordVisibility"
@@ -61,23 +58,28 @@
           <template v-if="passwordVisible">
             <img
               src="@/assets/pics/eye-off.png"
-              alt="TogglePasswordVisibility"
+              alt="إخفاء كلمة المرور"
               class="w-full h-full"
-          /></template>
+            />
+          </template>
           <template v-else>
             <img
               src="@/assets/pics/eye.png"
-              alt="TogglePasswordVisibility"
+              alt="إظهار كلمة المرور"
               class="w-full h-full"
-          /></template>
+            />
+          </template>
         </button>
       </div>
+
+      <!-- رسالة الخطأ -->
       <p v-if="errorMessage" class="text-red-500 mb-3 text-lg">
         {{ errorMessage }}
       </p>
+
       <button
         type="submit"
-        class="lg:w-2/5 w-1/2 py-2 rounded-md bg-blue-500 text-white text-lg hover:bg-blue-15 transition duration-300"
+        class="lg:w-2/5 w-1/2 py-2 rounded-md bg-blue-15 text-white text-lg hover:bg-blue-500 transition duration-300"
       >
         تسجيل الدخول
       </button>
@@ -93,12 +95,18 @@ export default {
     return {
       email: "",
       password: "",
-      errorMessage: "", // To store error message
-      passwordVisible: false, // State to track password visibility
+      errorMessage: "", // رسالة الخطأ
+      passwordVisible: false, // حالة عرض كلمة المرور
     };
   },
   methods: {
     async handleLogin() {
+      // Check if email or password is empty
+      if (!this.email.trim() || !this.password.trim()) {
+        this.errorMessage = "يرجى إدخال البريد الإلكتروني وكلمة المرور.";
+        return;
+      }
+
       try {
         const response = await fetch("http://localhost:3000/auth/signin", {
           method: "POST",
@@ -109,17 +117,19 @@ export default {
             emailOrUsername: this.email,
             password: this.password,
           }),
-          credentials: "include", // Send cookies with the request
+          credentials: "include",
         });
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || "فشل تسجيل الدخول");
+          throw new Error(
+            errorData.error || "فشل في تسجيل الدخول، يرجى التحقق من المعلومات."
+          );
         }
 
         const data = await response.json();
 
-        // Store user information in localStorage after successful login
+        // Store user information in localStorage
         const userInfo = {
           firstName: data.user.firstname,
           lastName: data.user.lastname,
@@ -128,27 +138,26 @@ export default {
           role: data.user.role,
         };
 
-        localStorage.setItem("user", JSON.stringify(userInfo)); // Corrected variable name
+        localStorage.setItem("user", JSON.stringify(userInfo));
 
         // Set the token in cookies
-        const token = data.token; // Assuming your API returns a token
-        Cookies.set("token", token, { expires: 2 }); // Store token for authentication
+        const token = data.token;
+        Cookies.set("token", token, { expires: 2 });
 
-        console.log("Login successful", data);
+        console.log("تم تسجيل الدخول بنجاح", data);
 
         // Clear the error message and reset the form
         this.errorMessage = "";
         this.email = "";
         this.password = "";
-        // Navigate to the dashboard or appropriate route
+
+        // Navigate to the dashboard
         this.$router.push({ name: "consultantProfile" });
       } catch (error) {
-        this.errorMessage = error.message || "فشل تسجيل الدخول"; // Display the error message
+        this.errorMessage =
+          error.message ||
+          "حدث خطأ أثناء تسجيل الدخول، يرجى المحاولة مرة أخرى.";
       }
-    },
-
-    togglePasswordVisibility() {
-      this.passwordVisible = !this.passwordVisible;
     },
   },
 };

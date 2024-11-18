@@ -1,19 +1,21 @@
 <template>
-  <div class="bg-blue-5 h-screen w-screen flex flex-col">
+  <div class="bg-gray-2 h-screen w-screen flex flex-col font-openSansArabic">
     <div class="px-3">
       <nav
-        class="py-3 px-3 w-full bg-white flex flex-row justify-between items-center rounded-b-xl shadow-lg"
+        class="py-2 px-3 w-full bg-white flex flex-row justify-between items-center rounded-b-xl shadow-lg"
       >
         <template v-if="isLgScreen">
-          <div class="flex flex-row justify-between items-center gap-2">
+          <div class="flex flex-row justify-between items-center gap-3">
             <button
               @click="signup"
-              class="bg-blue-1 text-white rounded-md px-3 py-1.5 shadow text-shadow-md"
+              class="bg-blue-1 text-white font-extralight rounded-md px-3 py-1 shadow text-shadow-md"
             >
               إنشاء حساب
             </button>
             <button @click="login">
-              <p class="text-gray-700 text-shadow-md">تسجيل الدخول</p>
+              <p class="text-gray-700 text-shadow-md font-extralight">
+                تسجيل الدخول
+              </p>
             </button>
           </div>
 
@@ -40,7 +42,7 @@
                   selectedItem === 'consultants',
                 'border-b-2 border-blue-1 pb-1 pr-1.5 outline-none text-shadow-md':
                   selectedItem === 'consultants',
-                'text-gray-800 pb-1 text-shadow-md':
+                'text-gray-800 pb-1 pr-1.5 border-b-2 border-transparent text-shadow-md ':
                   selectedItem !== 'consultants',
               }"
               @click="selectItem('consultants')"
@@ -53,7 +55,8 @@
                   selectedItem === 'pricing',
                 'border-b-2 border-blue-1 pb-1 pr-1.5 outline-none text-shadow-md':
                   selectedItem === 'pricing',
-                'text-gray-800 pb-1 text-shadow-md': selectedItem !== 'pricing',
+                'text-gray-800 pb-1 pr-1.5 border-b-2 border-transparent text-shadow-md':
+                  selectedItem !== 'pricing',
               }"
               @click="selectItem('pricing')"
             >
@@ -65,7 +68,7 @@
                   selectedItem === 'services',
                 'border-b-2 border-blue-1 pb-1 pr-1.5 outline-none text-shadow-md':
                   selectedItem === 'services',
-                'text-gray-800 pb-1 text-shadow-md':
+                'text-gray-800 pb-1 pr-1.5 border-b-2 border-transparent text-shadow-md':
                   selectedItem !== 'services',
               }"
               @click="selectItem('services')"
@@ -78,12 +81,12 @@
             to="/"
             class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-400 flex flex-row justify-center items-center gap-1 pr-2"
           >
-            <img src="@/assets/pics/estashir.png" class="w-10 h-10" />
             <p
               class="text-3xl bg-gradient-to-r font-normal from-black-1 via-blue-1 to-blue-2 text-transparent bg-clip-text pb-1"
             >
-              stashir
+              ستشر
             </p>
+            <img src="@/assets/pics/logo.png" class="w-10 h-10" />
           </router-link>
         </template>
 
@@ -182,12 +185,12 @@
             to="/"
             class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-400 flex flex-row justify-center items-center gap-1 pr-2"
           >
-            <img src="@/assets/pics/estashir.png" class="w-10 h-10" />
             <p
               class="text-3xl bg-gradient-to-r from-black-1 via-blue-1 to-blue-2 text-transparent bg-clip-text pb-1 font-normal"
             >
-              stashir
+              ستشر
             </p>
+            <img src="@/assets/pics/logo.png" class="w-10 h-10" />
           </router-link>
         </template>
       </nav>
@@ -195,44 +198,38 @@
     </div>
     <!-- Footer -->
     <footer
-      class="bg-gradient-to-b from-blue-4 to-blue-7 shadow-md py-4 mt-auto"
+      class="bg-blue-1 shadow-md pb-3 pt-8 px-6 mt-10 mx-3 rounded-t-xl flex lg:flex-row md:flex-row sm:gap-5 sm:flex-col-reverse justify-between lg:pl-24 md:pl-24 lg:pr-20 md:pr-20 lg:gap-28 md:gap-28"
     >
-      <div class="px-2 flex flex-row justify-between items-center">
-        <div
-          class="text-center lg:text-left flex lg:flex-row flex-col justify-center items-center lg:gap-10 gap-0"
+      <div class="flex flex-col justify-between items-end">
+        <p
+          class="tracking-wider font-openSansArabic font-medium text-xl text-white"
         >
-          <ul
-            class="text-center lg:text-left flex lg:flex-row flex-col justify-center items-center lg:gap-10 gap-0 text-gray-700 pl-10"
-          >
-            <li>
-              <router-link to="/about" class="hover:text-blue-500"
-                >معلومات عنا</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/contact" class="hover:text-blue-500"
-                >اتصل بنا</router-link
-              >
-            </li>
-            <li>
-              <router-link to="/terms" class="hover:text-blue-500"
-                >الشروط والأحكام</router-link
-              >
-            </li>
-          </ul>
+          اتصل بنا
+        </p>
+       <div class="flex lg:flex-col md:flex-col sm:flex-row sm:gap-3 "> <p class="tracking-widest font-openSansArabic text-gl text-white pt-1">
+          contact@estashir.com
+        </p>
+        <p class="tracking-widest font-openSansArabic text-gl text-white pt-1">
+          +971 55 215 1338
+        </p></div>
+        <div class="flex flex-row w-full justify-between pt-4">
+          <img src="@/assets/pics/instagram.png" class="h-6 w-6" /><img
+            src="@/assets/pics/linkedin.png"
+            class="h-6 w-6"
+          /><img src="@/assets/pics/twitter.png" class="h-6 w-6" />
         </div>
-        <router-link
-          to="/"
-          class="text-xl font-bold text-gray-800 md:text-2xl hover:text-blue-400 flex flex-row justify-ens items-center gap-1 pr-5"
-        >
-          <img src="@/assets/pics/estashir.png" class="w-10 h-10" />
-          <p
-            class="text-3xl bg-gradient-to-r font-normal from-black-1 via-blue-1 to-blue-2 text-transparent bg-clip-text pb-1"
-          >
-            stashir
-          </p>
-        </router-link>
       </div>
+      <div class="flex justify-center relative"  dir="rtl">
+        <p
+          class="text-right  tracking-wider text-lg text-gl text-white indent-16 leading-9"
+        >
+          ستشير منصة تتيح لك الوصول إلى مستشارين متخصصين لتقديم النصيحة والإرشاد
+          حسب احتياجاتك. تواصل مع الخبراء بسهولة، واحصل على حلول شاملة لمساعدتك
+          في اتخاذ قراراتك بثقة، وحقق أهدافك بخطوات مدروسة!
+        </p>
+<img src="@/assets/pics/logoWhite.png " class="h-12 absolute top-0 right-4"/>
+      </div>
+
     </footer>
   </div>
 </template>

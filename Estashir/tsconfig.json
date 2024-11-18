@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "target": "ESNext", // Suitable for modern JS
     "module": "ESNext", // Ensures that the latest module system is used
     "moduleResolution": "node", // Required for resolving node modules
@@ -14,7 +15,8 @@
     "baseUrl": ".", // Sets the base URL for resolving non-relative modules
     "paths": {
       "@/*": ["src/*"] // Allows alias '@/' to point to 'src/' directory
-    }
+    },
+    "types": ["vite-plugin-vuetify"]
   },
   "include": [
     "src/**/*.ts", // Include all TypeScript files in the src folder
